@@ -1,1 +1,29 @@
+{% extends 'base.html.twig'%}
+{% block title %}StarShop!{% endblock %}
+ {% block body %}
 <h1>Welcome to the homepage</h1>
+<div>
+Browse theough {{numberOfStarShips}} starships!
+{% if numberOfStarShips > 2 %}
+<p>That's a lot of starships!</p>
+{% endif %}
+
+
+{# this is on tage of twig tags  #}
+{% set fruit = 'apples' %}
+
+ {{ "I like %s and %s."|format(fruit, "oranges")}}
+
+ 
+</div>
+<div>
+    <h2>StarShips</h2>
+    <ul>
+            <li>
+                <a href="{{path('app_starship_show',{id:myShips.id})}}">Name: {{ myShips.name|upper }}</a>
+            </li>
+            <li>Count: {{ numberOfStarShips }}</li>
+            <li>starShips: {{ starShips | length * 10 }} : using twig filter</li>
+    </ul>
+</div>
+{% endblock %}
